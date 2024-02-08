@@ -7,5 +7,5 @@ services:
     privileged: true
     user: root
     ports:
-      - 8081:80
+      - 8082:80
     container_name: dnd_quickref
