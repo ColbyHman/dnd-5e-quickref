@@ -56,6 +56,16 @@ function fill_section(data, parentname, type) {
     });
 }
 
+function toggleMode() {
+    const modeToggle = document.getElementById("modeToggle");
+
+    if (modeToggle.checked) {
+        $("body").addClass("dark-mode");
+    } else {
+        $("body").removeClass("dark-mode");
+    }
+}
+
 function init() {
     fill_section(data_movement, "basic-movement", "Move");
     fill_section(data_action, "basic-actions", "Action");
@@ -72,3 +82,8 @@ function init() {
 }
 
 $(window).load(init);
+if (modeToggle.checked) {
+    $("body").addClass("dark-mode");
+} else {
+    $("body").removeClass("dark-mode");
+}

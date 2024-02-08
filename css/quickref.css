@@ -23,9 +23,20 @@
     background-color: white;
     border-color: inherit;
     font-size: inherit;
+    transition: background-color 0.5s ease;
 }
 
-.section-title {
+.dark-mode {
+    background-color: #333;
+}
+
+.dark-mode .section-content {
+    background-color: #333;
+    color: #fff;
+    transition: background-color 0.5s ease;
+}
+
+.section-title, .toggle-label {
     height: 32px;
     padding-left: 8px;
     padding-right: 8px;
@@ -35,6 +46,16 @@
     background-color: inherit;
     color: white;
     font-size: 16pt;
+}
+
+.toggle-label {
+    color: black;
+    transition: color 0.5s ease;
+}
+
+.dark-mode .toggle-label {
+    color: white;
+    transition: color 0.5s ease;
 }
 
 .float-right {
@@ -126,6 +147,14 @@
     color: maroon;
 }
 
+.dark-mode #section-movement, .dark-mode #section-movement .item-icon {
+    background-color: rgb(159, 57, 57);
+    border-color: rgb(159, 57, 57);
+}
+.dark-mode #section-movement .text {
+    color: rgb(159, 57, 57);
+}
+
 #section-action, #section-action .item-icon {
     background-color: black;
     border-color: black;
@@ -134,12 +163,29 @@
     color: black;
 }
 
+.dark-mode #section-action, .dark-mode #section-action .item-icon {
+    background-color: rgb(148, 148, 148);
+    border-color: rgb(148, 148, 148);
+}
+.dark-mode #section-action .text {
+    color: rgb(148, 148, 148);
+}
+
+
 #section-bonus-action, #section-bonus-action .item-icon {
     background-color: indigo;
     border-color: indigo;
 }
 #section-bonus-action .text {
     color: indigo;
+}
+
+.dark-mode #section-bonus-action, .dark-mode #section-bonus-action .item-icon {
+    background-color: rgb(138, 72, 185);
+    border-color: rgb(138, 72, 185);
+}
+.dark-mode #section-bonus-action .text {
+    color: rgb(138, 72, 185);
 }
 
 #section-reaction, #section-reaction .item-icon {
@@ -150,6 +196,14 @@
     color: DarkOliveGreen ;
 }
 
+.dark-mode #section-reaction, .dark-mode #section-reaction .item-icon {
+    background-color: rgb(116, 146, 64);
+    border-color: rgb(116, 146, 64);
+}
+.dark-mode #section-reaction .text {
+    color: rgb(116, 146, 64);
+}
+
 #section-condition, #section-condition .item-icon {
     background-color: FireBrick;
     border-color: FireBrick;
@@ -158,12 +212,28 @@
     color: FireBrick;
 }
 
+.dark-mode #section-condition, .dark-mode #section-condition .item-icon {
+    background-color: rgb(206, 69, 69);
+    border-color: rgb(206, 69, 69);
+}
+.dark-mode #section-condition .text {
+    color: rgb(206, 69, 69);
+}
+
 #section-environment, #section-environment .item-icon {
     background-color: ForestGreen;
     border-color: ForestGreen;
 }
 #section-environment .text {
     color: ForestGreen;
+}
+
+.dark-mode #section-environment, .dark-mode #section-environment .item-icon {
+    background-color: rgb(73, 143, 73);
+    border-color: rgb(73, 143, 73);
+}
+.dark-mode #section-environment .text {
+    color: rgb(73, 143, 73);
 }
 
 
@@ -175,6 +245,7 @@ body {
     display: flex;
     justify-content:center;
     align-content:center;
+    transition: background-color 0.5s ease;
 }
 
 /* ------------------------------------------------------------------------- */
@@ -203,6 +274,61 @@ p:first-child {
     margin-top: 1em;
 }
 
+.toggle-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.toggle-label {
+    margin-right: 10px;
+}
+
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+}
+
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: 0.4s;
+    border-radius: 50%;
+}
+
+input:checked + .slider {
+    background-color: #2196F3;
+}
+
+input:checked + .slider:before {
+    transform: translateX(26px);
+}
+
 /* ------------------------------------------------------------------------- */
 /* Modal */
 /* ------------------------------------------------------------------------- */
@@ -224,11 +350,19 @@ p:first-child {
     z-index: 1040;
     overflow: hidden;
     outline: 0;
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out;
+    -webkit-transition: opacity 0.5s ease-in-out;
+    -moz-transition: opacity 0.5s ease-in-out;
+    -o-transition: opacity 0.5s ease-in-out;
 }
 
 .modal-visible {
     display: block;
+    opacity: 1;
+    visibility: visible;
+    transition-timing-function: ease-out, step-end;
 }
 
 .modal-dialog {
