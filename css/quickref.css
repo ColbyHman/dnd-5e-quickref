@@ -148,11 +148,11 @@
 }
 
 .dark-mode #section-movement, .dark-mode #section-movement .item-icon {
-    background-color: rgb(194, 84, 84);
-    border-color: rgb(194, 84, 84);
+    background-color: rgb(198, 101, 101);
+    border-color: rgb(198, 101, 101);
 }
 .dark-mode #section-movement .text {
-    color: rgb(194, 84, 84);
+    color: rgb(198, 101, 101);
 }
 
 #section-action, #section-action .item-icon {
