@@ -5,7 +5,6 @@ Quick reference sheet for D&amp;D 5e
 
 Forked from https://github.com/crobi/dnd5e-quickref
 
-
 Icons
 ==============
 
